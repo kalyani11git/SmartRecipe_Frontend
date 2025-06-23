@@ -1,0 +1,11 @@
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600&display=swap'); */
+/* In index.css or a Home-specific CSS module */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
