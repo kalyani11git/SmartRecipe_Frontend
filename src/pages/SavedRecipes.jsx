@@ -20,7 +20,7 @@ const SavedRecipes = () => {
         });
 
         const savedRecipes = response.data || [];
-        console.log("savedRecipes :"+savedRecipes[0].id);
+       
         
 
         // Step 2: Fetch details from Spoonacular
@@ -28,10 +28,10 @@ const SavedRecipes = () => {
           axios.get(`https://api.spoonacular.com/recipes/${item.id}/information?includeNutrition=false&apiKey=${API_KEY}`)
         );
 
-        console.log("detailsPromises : "+detailsPromises);
+      
         
         const resolvedDetails = await Promise.all(detailsPromises);
-        console.log("Resolved recipe details:", resolvedDetails);
+       
         const fullDetails = resolvedDetails.map((res) => res.data);
         setSavedRecipeDetails(fullDetails);
       } catch (err) {
@@ -43,6 +43,26 @@ const SavedRecipes = () => {
 
     if (token) fetchSavedRecipes();
   }, [token]);
+
+
+  const handleRemoveRecipe = async (id) => {
+  try {
+    const res = await axios.delete(`${BASE_URL}/api/user/remove-recipe/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (res.status === 200) {
+      setSavedRecipeDetails(prev => prev.filter(recipe => recipe.id !== id));
+    } else {
+      console.error("Failed to remove recipe");
+    }
+  } catch (err) {
+    console.error("Error removing recipe:", err);
+  }
+};
+
 
   if (!token) {
     return <p className="text-center py-10 text-red-500">You need to be logged in to view saved recipes.</p>;
@@ -60,8 +80,9 @@ const SavedRecipes = () => {
       ) : (
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {savedRecipeDetails.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
-          ))}
+  <RecipeCard key={recipe.id} recipe={recipe} onRemove={handleRemoveRecipe} />
+))}
+
         </div>
       )}
     </div>

@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />
       <Navbar/>
-      <Routes>
+      <Routes >
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />

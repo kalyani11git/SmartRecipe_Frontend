@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <>
-    <div className="bg-[#F7F6BB] min-h-screen flex items-center justify-center px-4">
+    <div  className="bg-[#F7F6BB] min-h-screen flex items-center justify-center px-4 scrollbar-hide overflow-y-scroll" style={{scrollbarWidth:'none'}} >
       <section className="bg-white rounded-3xl shadow-xl max-w-6xl w-full flex flex-col md:flex-row items-center justify-between p-8 md:p-16 gap-10 overflow-hidden">
         {/* Left Text Section */}
         <div className="md:w-1/2 text-center md:text-left">
