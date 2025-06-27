@@ -144,7 +144,7 @@ const RecipeDetail = () => {
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
               >
                 <img
-                  src={`https://spoonacular.com/recipeImages/${r.id}.jpg`}
+                  src={`https://spoonacular.com/recipeImages/${r.id}-556x370.jpg`}
                   alt={r.title}
                   className="w-full h-32 object-cover"
                 />
