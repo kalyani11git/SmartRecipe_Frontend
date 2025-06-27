@@ -58,8 +58,8 @@ const RecipeDetail = () => {
     }
 
     try {
-      const res = await axios.post(
-        'http://localhost:8080/api/user/save-recipe',
+      const res = await axios.post(`${BASE_URL+'/api/user/save-recipe'}`
+        ,
         {
           id: recipe.id,
           savedAt: new Date().toISOString(),
@@ -144,7 +144,7 @@ const RecipeDetail = () => {
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
               >
                 <img
-                  src={`https://spoonacular.com/recipeImages/${r.id}-556x370.jpg`}
+                  src={`https://spoonacular.com/recipeImages/${r.id}.jpg`}
                   alt={r.title}
                   className="w-full h-32 object-cover"
                 />
